@@ -1,35 +1,208 @@
 /* Reset */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, img, dl, dt, dd, ol, ul, li, fieldset, form, label, caption, article, aside,
+figure, figcaption, footer, header, menu, nav, section, mark, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
 
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, img,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, caption, article, aside,
-figure, figcaption, footer, header,
-menu, nav, section, summary,
-mark {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, button {
+  display: block;
 }
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {display: block;}
-body {line-height: 1;}
-ol, ul {list-style: none;}
 
-:root{
-    --font-family-h: Montserrat, sans-serif;
-    --font-family-p: "Segoe UI", Arial, sans-serif;
-    --color-primary: #000;
-    --color-secondary: #fff;
-    --color-link: #6e6e6e;
+body {
+  line-height: 1;
 }
-*{box-sizing: border-box;}
-html{scroll-behavior: smooth;}
-body{
-    font-size: 10px;
-    font-family: var(--font-family-p);
-    color:var(--color-primary);
+
+ol, ul {
+  list-style: none;
 }
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 10px;
+}
+
+:root {
+  --font-family-h: Montserrat, sans-serif;
+  --font-family-p: "Segoe UI", Arial, sans-serif;
+  --color-primary: #000;
+  --color-secondary: #fff;
+  --color-link: #6e6e6e;
+}
+
+/* breakpoints */
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: var(--font-family-p);
+  font-weight: 400;
+  color: var(--color-primary);
+  max-width: 728px;
+  margin: auto;
+  padding: 0 1em;
+}
+
+@media only screen and (min-width: 992px) {
+  body {
+    max-width: 940px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-h);
+  text-transform: uppercase;
+}
+
+a {
+  font-family: var(--font-family-h);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-link);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  position: relative;
+}
+
+a.active {
+  color: var(--color-primary);
+}
+
+a:not(.branding-link)::after, a.active::after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-primary);
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: -webkit-transform .2s ease-in-out;
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+}
+
+a:hover::after, a:focus::after, a.active::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+header {
+  padding: 2.4rem 0;
+}
+
+@media only screen and (min-width: 992px) {
+  header {
+    padding: 7rem 0;
+  }
+}
+
+header nav.primary-nav {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header nav.primary-nav .branding {
+  font-size: 3.3rem;
+  font-weight: 400;
+  color: var(--color-primary);
+}
+
+header nav.primary-nav .branding:hover {
+  color: var(--color-link);
+}
+
+header nav.primary-nav .nav-button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  width: 2.2rem;
+  height: 2.2rem;
+  position: relative;
+}
+
+header nav.primary-nav .nav-button .lines {
+  height: 0.2rem;
+  position: absolute;
+  width: 100%;
+  background-color: var(--color-primary);
+  border-radius: 1rem;
+}
+
+header nav.primary-nav .nav-button .lines.l-2 {
+  top: 46%;
+}
+
+header nav.primary-nav .nav-button .lines.l-1 {
+  top: 0.2rem;
+}
+
+header nav.primary-nav .nav-button .lines.l-3 {
+  bottom: 0.2rem;
+}
+
+header nav.primary-nav .nav-list {
+  border-bottom: 0rem solid var(--color-primary);
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: all .5s ease-in;
+  transition: all .5s ease-in;
+}
+
+header nav.primary-nav .nav-list .nav-item {
+  margin: 2.5rem 0;
+}
+
+header nav.primary-nav .nav-list.open {
+  padding: 2rem 0;
+  height: 20rem;
+  border-bottom: 0.1rem solid var(--color-primary);
+}
+
+@media only screen and (min-width: 992px) {
+  header nav.primary-nav .nav-button {
+    display: none;
+  }
+  header nav.primary-nav .nav-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    overflow: visible;
+    height: auto;
+    width: auto;
+  }
+  header nav.primary-nav .nav-list .nav-item {
+    margin: 0;
+  }
+  header nav.primary-nav .nav-list .nav-item:not(:last-child) {
+    padding: 0 3rem 0 0;
+  }
+}
+/*# sourceMappingURL=style.css.map */
