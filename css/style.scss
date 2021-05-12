@@ -6,6 +6,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 body {line-height: 1;}
 ol, ul {list-style: none;}
 
+/* Root Styling */
+
 *{box-sizing: border-box;}
 html{
     scroll-behavior: smooth;
@@ -19,18 +21,16 @@ html{
     --color-secondary: #fff;
     --color-link: #6e6e6e;
 }
+
 /* breakpoints */
+
 $--breakpoint-xs: 0;
 $--breakpoint-sm: 576px;
 $--breakpoint-md: 768px;
 $--breakpoint-lg: 992px;
 $--breakpoint-xl: 1200px;
 
-.flex{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
+
 body{
     font-size: 1.6rem;
     font-family: var(--font-family-p);
@@ -43,6 +43,11 @@ body{
         max-width: 940px;
     }
 }
+.flex{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
 h1, h2, h3, h4, h5, h6{
     font-family:var(--font-family-h);
     text-transform: uppercase;
@@ -51,15 +56,14 @@ a{
     font-family:var(--font-family-h);
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--color-link);
+    color: var(--color-primary);
     font-size: 1.2rem;
     font-weight:600;
     letter-spacing: 0.1rem;
     cursor: pointer;
     position: relative;
 }
-a.active{color: var(--color-primary);}
-a:not(.branding-link)::after, a.active::after{
+a:not(.branding-link, .social-icon)::after, a.active::after{
     content: "";
     position: absolute;
 	display: block;
@@ -71,6 +75,9 @@ a:not(.branding-link)::after, a.active::after{
 	transition: transform .2s ease-in-out;
 }
 a:hover::after, a:focus::after, a.active::after{transform: scaleX(1);}
+a:hover, a:focus{color: var(--color-link);}
+a.active {color: var(--color-primary) !important;}
+
 
 header{
     padding:2.4rem 0;
@@ -82,8 +89,6 @@ header{
         .branding{
             font-size: 3.3rem;
             font-weight: 400;
-            color: var(--color-primary);
-            &:hover{color: var(--color-link);}
         }
         .nav-button{
             cursor: pointer;
@@ -117,6 +122,7 @@ header{
                 height:20rem;
                 border-bottom: 0.1rem solid var(--color-primary);
             }
+            .nav-link{color: var(--color-link);}
         }
         @media only screen and (min-width: $--breakpoint-lg){
             .nav-button{display: none;}
@@ -128,10 +134,26 @@ header{
                 width: auto;
                 .nav-item{
                     margin:0;
-                    &:not(:last-child){
-                    padding: 0 3rem 0 0;}
+                    &:not(:last-child){padding: 0 3rem 0 0;}
                 }
             }
         }
+    }
+}
+
+footer{
+    justify-content: center;
+    text-align: center;
+    .social-icon{
+        font-size: 2rem;
+        &:not(:last-child){padding: 0 1rem 0 0;}
+    }
+    .branding{
+        font-size: 1.2rem;
+        width: 100%;
+        margin: 1rem;
+        text-transform: uppercase;
+        color: var(--color-link);
+        letter-spacing: 0.1rem;
     }
 }
