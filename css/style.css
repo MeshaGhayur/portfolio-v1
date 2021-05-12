@@ -211,6 +211,7 @@ header nav.primary-nav .nav-list .nav-link {
 }
 
 footer {
+  padding: 5rem 0;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
