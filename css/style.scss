@@ -20,6 +20,10 @@ html{
     --color-primary: #000;
     --color-secondary: #fff;
     --color-link: #6e6e6e;
+    --font-size-h1: 2.8rem;
+    --font-size-h2: 2.4rem;
+    --font-size-p: 1.5rem;
+    --font-size-link: 1.2rem;
 }
 
 /* breakpoints */
@@ -32,7 +36,7 @@ $--breakpoint-xl: 1200px;
 
 
 body{
-    font-size: 1.6rem;
+    font-size: var(--font-size-p);
     font-family: var(--font-family-p);
     font-weight: 400;
     color:var(--color-primary);
@@ -41,6 +45,7 @@ body{
     padding: 0 1em;
     @media only screen and (min-width: $--breakpoint-lg){
         max-width: 940px;
+        font-size: 1.6rem;
     }
 }
 .flex{
@@ -51,13 +56,22 @@ body{
 h1, h2, h3, h4, h5, h6{
     font-family:var(--font-family-h);
     text-transform: uppercase;
+    line-height: 1.2;
 }
+h1{
+    font-size: var(--font-size-h1);
+    @media only screen and (min-width: $--breakpoint-lg){
+        font-size: 3.3rem;
+    }
+}
+h2{font-size: var(--font-size-h2);}
+p{line-height: 1.5;}
 a{
     font-family:var(--font-family-h);
     text-transform: uppercase;
     text-decoration: none;
     color: var(--color-primary);
-    font-size: 1.2rem;
+    font-size: var(--font-size-link);
     font-weight:600;
     letter-spacing: 0.1rem;
     cursor: pointer;
@@ -86,10 +100,7 @@ header{
     }
     nav.primary-nav{
         justify-content: space-between;
-        .branding{
-            font-size: 3.3rem;
-            font-weight: 400;
-        }
+        .branding{font-weight: 400;}
         .nav-button{
             cursor: pointer;
             border: none;
@@ -142,7 +153,7 @@ header{
 }
 
 footer{
-    padding: 5rem 0;
+    padding: 7rem 0;
     justify-content: center;
     text-align: center;
     .social-icon{
@@ -150,11 +161,31 @@ footer{
         &:not(:last-child){padding: 0 1rem 0 0;}
     }
     .branding{
-        font-size: 1.2rem;
+        font-size: var(--font-size-link);
         width: 100%;
         margin: 1rem;
         text-transform: uppercase;
         color: var(--color-link);
         letter-spacing: 0.1rem;
+    }
+}
+section{margin: 5rem 0;}
+#about{
+    text-align: center;
+    margin: auto;
+    &> *{margin: 3.5rem 0;}
+    .divider{
+        width: 7rem;
+        margin: 9rem auto;
+    }
+    .title{
+        text-transform: none;
+        font-size: var(--font-size-h2);}
+    .description{
+        font-family: var(--font-family-h);
+        line-height: 1.2;
+    }
+    @media only screen and (min-width: $--breakpoint-lg){
+        max-width: 66%;
     }
 }
