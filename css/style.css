@@ -97,6 +97,10 @@ p {
   line-height: 1.5;
 }
 
+img {
+  width: 100%;
+}
+
 a {
   font-family: var(--font-family-h);
   text-transform: uppercase;
@@ -106,13 +110,16 @@ a {
   font-weight: 600;
   letter-spacing: 0.1rem;
   cursor: pointer;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   position: relative;
 }
 
-a:not(.branding-link, .social-icon)::after, a.active::after {
+a:not(.branding-link, .social-icon)::after {
   content: "";
-  position: absolute;
   display: block;
+  position: absolute;
   bottom: -4px;
   height: 2px;
   width: 100%;
@@ -134,15 +141,17 @@ a:hover, a:focus {
   color: var(--color-link);
 }
 
-a.active {
-  color: var(--color-primary) !important;
+@media only screen and (min-width: 992px) {
+  a.active {
+    color: var(--color-primary) !important;
+  }
 }
 
 header {
   padding: 2.4rem 0;
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 768px) {
   header {
     padding: 7rem 0;
   }
@@ -188,12 +197,18 @@ header nav.primary-nav .nav-button .lines.l-3 {
 }
 
 header nav.primary-nav .nav-list {
-  border-bottom: 0rem solid var(--color-primary);
   width: 100%;
   height: 0;
   overflow: hidden;
   -webkit-transition: all .5s ease-in;
   transition: all .5s ease-in;
+  text-align: center;
+}
+
+@media only screen and (max-width: 992px) {
+  header nav.primary-nav .nav-list {
+    background-color: var(--color-primary);
+  }
 }
 
 header nav.primary-nav .nav-list .nav-item {
@@ -201,13 +216,25 @@ header nav.primary-nav .nav-list .nav-item {
 }
 
 header nav.primary-nav .nav-list.open {
+  margin: 1.6rem 0;
   padding: 2rem 0;
-  height: 20rem;
-  border-bottom: 0.1rem solid var(--color-primary);
+  height: 19rem;
 }
 
 header nav.primary-nav .nav-list .nav-link {
-  color: var(--color-link);
+  color: var(--color-secondary);
+}
+
+@media only screen and (min-width: 992px) {
+  header nav.primary-nav .nav-list .nav-link {
+    color: var(--color-link);
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  header nav.primary-nav .nav-list .nav-link::after {
+    background-color: var(--color-secondary);
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -290,5 +317,22 @@ section {
   #about {
     max-width: 66%;
   }
+}
+
+.inner-page * {
+  margin-bottom: 1.6rem;
+}
+
+.inner-page .copy .title {
+  font-size: 1.8rem;
+}
+
+.inner-page .copy .title::after {
+  content: "";
+  height: 0.2rem;
+  width: 15%;
+  background-color: var(--color-primary);
+  display: block;
+  margin: 2.6rem 0;
 }
 /*# sourceMappingURL=style.css.map */

@@ -66,6 +66,7 @@ h1{
 }
 h2{font-size: var(--font-size-h2);}
 p{line-height: 1.5;}
+img{width: 100%;}
 a{
     font-family:var(--font-family-h);
     text-transform: uppercase;
@@ -75,12 +76,13 @@ a{
     font-weight:600;
     letter-spacing: 0.1rem;
     cursor: pointer;
+    display:inline-flex;
     position: relative;
 }
-a:not(.branding-link, .social-icon)::after, a.active::after{
+a:not(.branding-link, .social-icon)::after{
     content: "";
-    position: absolute;
 	display: block;
+    position: absolute;
 	bottom: -4px;
 	height: 2px;
     width: 100%;
@@ -90,12 +92,16 @@ a:not(.branding-link, .social-icon)::after, a.active::after{
 }
 a:hover::after, a:focus::after, a.active::after{transform: scaleX(1);}
 a:hover, a:focus{color: var(--color-link);}
-a.active {color: var(--color-primary) !important;}
+a.active {
+    @media only screen and (min-width: $--breakpoint-lg){
+        color:var(--color-primary) !important;
+    }
+}
 
 
 header{
     padding:2.4rem 0;
-    @media only screen and (min-width: $--breakpoint-lg){
+    @media only screen and (min-width: $--breakpoint-md){
         padding: 7rem 0;
     }
     nav.primary-nav{
@@ -120,20 +126,32 @@ header{
             }
         }
         .nav-list{
-            border-bottom: 0rem solid var(--color-primary);
             width: 100%;
             height:0;
             overflow: hidden;
             transition: all .5s ease-in;
+            text-align: center;
+            @media only screen and (max-width: $--breakpoint-lg){
+                background-color: var(--color-primary);
+            }
             .nav-item{
                 margin:2.5rem 0;
             }
             &.open{
+                margin: 1.6rem 0;
+
                 padding: 2rem 0;
-                height:20rem;
-                border-bottom: 0.1rem solid var(--color-primary);
+                height:19rem;
             }
-            .nav-link{color: var(--color-link);}
+            .nav-link{
+                color:var(--color-secondary);
+                @media only screen and (min-width: $--breakpoint-lg){
+                    color: var(--color-link);
+                }
+                @media only screen and (max-width: $--breakpoint-lg){
+                    &::after{background-color: var(--color-secondary);}
+                }
+            }
         }
         @media only screen and (min-width: $--breakpoint-lg){
             .nav-button{display: none;}
@@ -187,5 +205,28 @@ section{margin: 5rem 0;}
     }
     @media only screen and (min-width: $--breakpoint-lg){
         max-width: 66%;
+    }
+}
+.inner-page{
+    *{margin-bottom:1.6rem;}
+
+    .copy{
+        .title{
+            font-size: 1.8rem;
+            &::after{
+                content:"";
+                height:0.2rem;
+                width:15%;
+                background-color: var(--color-primary);
+                display: block;
+                margin: 2.6rem 0;
+            }
+        }
+
+        }
+    .images{
+
+    }
+    .back-to-home{
     }
 }
