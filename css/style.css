@@ -37,7 +37,7 @@ html {
   --font-family-p: "Segoe UI", Arial, sans-serif;
   --color-primary: #000;
   --color-secondary: #fff;
-  --color-link: #6e6e6e;
+  --color-link: #666;
   --font-size-h1: 2.8rem;
   --font-size-h2: 2.4rem;
   --font-size-p: 1.5rem;
@@ -58,7 +58,6 @@ body {
 @media only screen and (min-width: 992px) {
   body {
     max-width: 940px;
-    font-size: 1.6rem;
   }
 }
 
@@ -148,7 +147,7 @@ a:hover, a:focus {
 }
 
 header {
-  padding: 2.4rem 0;
+  padding: 4rem 0;
 }
 
 @media only screen and (min-width: 768px) {
@@ -311,6 +310,7 @@ section {
 #about .description {
   font-family: var(--font-family-h);
   line-height: 1.2;
+  font-size: 1.6rem;
 }
 
 @media only screen and (min-width: 992px) {
@@ -319,8 +319,38 @@ section {
   }
 }
 
+.inner-page {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media only screen and (min-width: 992px) {
+  .inner-page {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
 .inner-page * {
   margin-bottom: 1.6rem;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+}
+
+.inner-page .copy {
+  -ms-flex-preferred-size: 33%;
+      flex-basis: 33%;
 }
 
 .inner-page .copy .title {
@@ -334,5 +364,42 @@ section {
   background-color: var(--color-primary);
   display: block;
   margin: 2.6rem 0;
+}
+
+@media only screen and (min-width: 992px) {
+  .inner-page .copy {
+    padding-right: 1.5rem;
+  }
+}
+
+.inner-page .images {
+  -ms-flex-preferred-size: 66%;
+      flex-basis: 66%;
+}
+
+.inner-page .back-to-home {
+  margin-left: auto;
+}
+
+.btn {
+  margin: 2.5rem 1.6rem 2.5rem 0;
+}
+
+.btn:not(:first-of-type) {
+  margin-left: 1.6rem;
+  position: relative;
+}
+
+.btn:not(:first-of-type)::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: -1.6rem;
+  margin-right: 1.6rem;
+  height: 1.8rem;
+  width: 0.1rem;
+  background-color: rgba(110, 110, 110, 0.4);
 }
 /*# sourceMappingURL=style.css.map */

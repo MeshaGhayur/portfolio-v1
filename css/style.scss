@@ -19,7 +19,7 @@ html{
     --font-family-p: "Segoe UI", Arial, sans-serif;
     --color-primary: #000;
     --color-secondary: #fff;
-    --color-link: #6e6e6e;
+    --color-link: #666;
     --font-size-h1: 2.8rem;
     --font-size-h2: 2.4rem;
     --font-size-p: 1.5rem;
@@ -45,7 +45,6 @@ body{
     padding: 0 1em;
     @media only screen and (min-width: $--breakpoint-lg){
         max-width: 940px;
-        font-size: 1.6rem;
     }
 }
 .flex{
@@ -100,7 +99,7 @@ a.active {
 
 
 header{
-    padding:2.4rem 0;
+    padding:4rem 0;
     @media only screen and (min-width: $--breakpoint-md){
         padding: 7rem 0;
     }
@@ -202,14 +201,23 @@ section{margin: 5rem 0;}
     .description{
         font-family: var(--font-family-h);
         line-height: 1.2;
+        font-size: 1.6rem;
     }
     @media only screen and (min-width: $--breakpoint-lg){
         max-width: 66%;
     }
 }
 .inner-page{
-    *{margin-bottom:1.6rem;}
-
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    @media only screen and (min-width: $--breakpoint-lg){
+        flex-direction: row;
+    }
+    *{
+        margin-bottom:1.6rem;
+        flex: 0 1 auto;
+    }
     .copy{
         .title{
             font-size: 1.8rem;
@@ -222,11 +230,29 @@ section{margin: 5rem 0;}
                 margin: 2.6rem 0;
             }
         }
-
+        flex-basis:33%;
+        @media only screen and (min-width: $--breakpoint-lg){
+            padding-right: 1.5rem;
         }
-    .images{
-
     }
+    .images{flex-basis: 66%;}
     .back-to-home{
+        margin-left:auto;
+    }
+}
+.btn{margin: 2.5rem 1.6rem 2.5rem 0;}
+.btn:not(:first-of-type){
+    margin-left: 1.6rem;
+    position: relative;
+    &::before{
+        content: "";
+        position: absolute;
+        top:50%;
+        transform: translateY(-50%);
+        left: -1.6rem;
+        margin-right: 1.6rem;
+        height:1.8rem;
+        width: 0.1rem;
+        background-color: rgba(110,110,110, 0.4);
     }
 }
