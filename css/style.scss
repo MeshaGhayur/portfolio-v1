@@ -34,6 +34,16 @@ $--breakpoint-md: 768px;
 $--breakpoint-lg: 992px;
 $--breakpoint-xl: 1200px;
 
+@mixin hr($bkg-color, $margin-y:0) {
+    &::after{
+        content: "";
+        height: 0.2rem;
+        width: 17%;
+        display: block;
+        background-color: $bkg-color;
+        margin: 3rem $margin-y;
+    }
+}
 
 body{
     font-size: var(--font-size-p);
@@ -51,6 +61,12 @@ body{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    *{
+        flex: 1 1;
+    }
+    &.initial *{
+        flex: 0 1 auto
+    }
 }
 h1, h2, h3, h4, h5, h6{
     font-family:var(--font-family-h);
@@ -207,28 +223,22 @@ section{margin: 5rem 0;}
         max-width: 66%;
     }
 }
-.inner-page{
-    align-items: flex-start;
-    justify-content: space-between;
+main{
     flex-direction: column;
     @media only screen and (min-width: $--breakpoint-lg){
         flex-direction: row;
     }
+}
+.inner-page{
+    align-items: flex-start;
+    justify-content: space-between;
     *{
         margin-bottom:1.6rem;
-        flex: 0 1 auto;
     }
     .copy{
         .title{
             font-size: 1.8rem;
-            &::after{
-                content:"";
-                height:0.2rem;
-                width:15%;
-                background-color: var(--color-primary);
-                display: block;
-                margin: 2.6rem 0;
-            }
+            @include hr (var(--color-primary));
         }
         flex-basis:33%;
         @media only screen and (min-width: $--breakpoint-lg){
@@ -239,19 +249,51 @@ section{margin: 5rem 0;}
     .back-to-home{
         margin-left:auto;
     }
+    .btn{
+        flex: 1 1 auto;
+        &:first-child{
+            margin-left: 0;
+        }
+    }
 }
-.btn{margin: 2.5rem 1.6rem 2.5rem 0;}
-.btn:not(:first-of-type){
-    margin-left: 1.6rem;
-    position: relative;
-    &::before{
+.main-page{
+    .card{
+        text-align: center;
+        margin-bottom: 2rem;
+        background-color: #d66f56;
+        @media only screen and (min-width: $--breakpoint-lg){
+            margin: 0 0.8rem;
+        }
+        .copy{
+            padding: 7rem 4rem 0;
+            color: var(--color-secondary);
+            .title{
+                margin: 0 0 3rem;
+                font-weight: 700;
+                text-transform: initial;
+                @include hr (var(--color-secondary), auto);
+            }
+            p{margin: 3rem auto 6rem;}
+        }
+        img{width:75%;}
+        .buttons{
+            background-color: var(--color-secondary);
+            margin: -0.2rem;
+        }
+    }
+    @media only screen and (min-width: $--breakpoint-lg){
+        margin: 0 -0.8rem;
+    }
+}
+.btn{
+    justify-content: space-around;
+    margin: 2.5rem auto;
+    &:not(:last-child)::before{
         content: "";
         position: absolute;
-        top:50%;
-        transform: translateY(-50%);
-        left: -1.6rem;
-        margin-right: 1.6rem;
-        height:1.8rem;
+        top:-0.8rem;
+        bottom:-0.8rem;
+        right:0;
         width: 0.1rem;
         background-color: rgba(110,110,110, 0.4);
     }
