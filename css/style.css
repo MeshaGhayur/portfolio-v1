@@ -392,6 +392,12 @@ main {
   }
 }
 
+.inner-page .copy span.tools {
+  font-family: var(--font-family-h);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 .inner-page .images {
   -ms-flex-preferred-size: 66%;
       flex-basis: 66%;
