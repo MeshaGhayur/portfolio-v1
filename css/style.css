@@ -124,7 +124,7 @@ a:not(.content-container-a) {
   position: relative;
 }
 
-a:not(.branding-link, .social-icon, .content-container-a)::after {
+a:not(.branding-link, .social-icon, .content-container-a, .say-hi-link)::after {
   content: "";
   display: block;
   position: absolute;
@@ -329,8 +329,12 @@ section {
 
 #about .description {
   font-family: var(--font-family-h);
-  line-height: 1.2;
-  font-size: 1.6rem;
+}
+
+#about a {
+  text-transform: lowercase;
+  text-decoration: underline;
+  font-size: var(--font-size-p);
 }
 
 @media only screen and (min-width: 992px) {

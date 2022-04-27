@@ -93,7 +93,7 @@ a:not(.content-container-a){
     display:inline-flex;
     position: relative;
 }
-a:not(.branding-link, .social-icon, .content-container-a)::after{
+a:not(.branding-link, .social-icon, .content-container-a, .say-hi-link)::after{
     content: "";
 	display: block;
     position: absolute;
@@ -223,8 +223,11 @@ section{margin: 5rem 0;}
         font-size: var(--font-size-h2);}
     .description{
         font-family: var(--font-family-h);
-        line-height: 1.2;
-        font-size: 1.6rem;
+    }
+    a{
+        text-transform: lowercase;
+        text-decoration: underline;
+        font-size: var(--font-size-p);
     }
     @media only screen and (min-width: $--breakpoint-lg){
         max-width: 66%;
