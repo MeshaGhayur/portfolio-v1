@@ -2,18 +2,28 @@
 function toggleOpen() {
   var element = document.getElementById("nav-list");
 
-  if (element.classList) { 
+  if (element.classList) {
     element.classList.toggle("open");
   } else {
     var classes = element.className.split(" ");
     var i = classes.indexOf("open");
 
-    if (i >= 0) 
+    if (i >= 0){
       classes.splice(i, 1);
-    else 
+
+    } else {
       classes.push("open");
-      element.className = classes.join(" "); 
+      element.className = classes.join(" ");
+    }
   }
+  var button = document.querySelector(".nav-button")
+  var x = button.getAttribute("aria-expanded");
+  if (x == "true"){
+    x = "false"
+    } else {
+      x = "true"
+    }
+  button.setAttribute("aria-expanded", x);
 }
 
 window.addEventListener("load", function(){
