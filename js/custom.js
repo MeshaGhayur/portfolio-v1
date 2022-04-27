@@ -16,27 +16,15 @@ function toggleOpen() {
   }
 }
 
-function addActive() {
-  var current = location.pathname.split('/')[1];
+window.addEventListener("load", function(){
+  var current = location.pathname.split('/')[1] + location.hash;
   if (current === "") return;
   var menuItems = document.querySelectorAll('.nav-item a');
   for (var i = 0, len = menuItems.length; i < len; i++) {
       if (menuItems[i].getAttribute("href").indexOf(current) !== -1) {
-          menuItems[i].className += "active";
+          menuItems[i].className += " active";
       }
   }
-}
-addActive();
+});
 
-/* delete if it doesn't work
 
-(function() {
-  var anchor = document.getElementById('nav-list').getElementsByTagName("a"),
-      current = window.location.pathname.split('/')[1];
-      for (var i = 0; i < anchor.length; i++) {
-      if(anchor[i].href == current) {
-          anchor[i].className = "active";
-      }
-  }
-})();
-*/

@@ -59,7 +59,6 @@ body{
 }
 .flex{
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
     *{
         flex: 1 1;
@@ -82,7 +81,7 @@ h1{
 h2{font-size: var(--font-size-h2);}
 p{line-height: 1.5;}
 img{width: 100%;}
-a{
+a:not(.content-container-a){
     font-family:var(--font-family-h);
     text-transform: uppercase;
     text-decoration: none;
@@ -94,7 +93,7 @@ a{
     display:inline-flex;
     position: relative;
 }
-a:not(.branding-link, .social-icon)::after{
+a:not(.branding-link, .social-icon, .content-container-a)::after{
     content: "";
 	display: block;
     position: absolute;
@@ -112,7 +111,6 @@ a.active {
         color:var(--color-primary) !important;
     }
 }
-
 
 header{
     padding:4rem 0;
@@ -249,10 +247,13 @@ main{
     .back-to-home{
         margin-left:auto;
     }
-    .btn{
-        flex: 1 1 auto;
-        &:first-child{
-            margin-left: 0;
+    .buttons-container{
+        .btn{
+            display: inline-block;
+            a{ margin: 0 2rem;}
+            &:first-child a{
+                margin-left: 0;
+            }
         }
     }
 }
@@ -260,25 +261,66 @@ main{
     .card{
         text-align: center;
         margin-bottom: 2rem;
-        background-color: #d66f56;
+        flex-basis: 48%;
+        flex-direction: column;
+        position: relative;
         @media only screen and (min-width: $--breakpoint-lg){
-            margin: 0 0.8rem;
+            margin-left: 0.8rem;
+            margin-right: 0.8rem;
         }
-        .copy{
-            padding: 7rem 4rem 0;
+        .content-container-a{
             color: var(--color-secondary);
-            .title{
-                margin: 0 0 3rem;
-                font-weight: 700;
-                text-transform: initial;
-                @include hr (var(--color-secondary), auto);
+            text-decoration: none;
+            overflow: hidden;
+            .pop-out{
+                background-color: #000;
+                position: absolute;
+                top: 0;
+                right: 1.5rem;
+                height: 0;
+                overflow: hidden;
+                transition: height .3s ease-in;
+                p{
+                    padding: 18px 12px;
+                    font-size: 1.2rem;
+                }
             }
-            p{margin: 3rem auto 6rem;}
+            .copy{
+                padding: 7rem 4rem 0;
+                min-width: 100%;
+                .title{
+                    margin: 0 0 3rem;
+                    transition: margin .2s ease-in-out;
+                    font-weight: 700;
+                    text-transform: initial;
+                    @include hr (var(--color-secondary), auto);
+                }
+                p{margin: 3rem auto 6rem;}
+            }
+            img{
+                max-width:70%;
+                align-self: end;
+                margin: 0 auto;
+	            transition: transform .2s ease-in-out;
+                transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+                transition:-webkit-transform .2s ease-in-out;
+            }
+            &:hover .pop-out, &:focus .pop-out{
+                height: 5.4rem;
+            }
+            &:hover .title, &:focus .title{
+                margin: -0.5rem 0 3.5rem;
+            }
+            &:hover img, &:focus img{
+                -webkit-transform: scaleX(1.02);
+	            transform: scale(1.02);
+            }
         }
-        img{width:75%;}
-        .buttons{
+        .buttons-container{
             background-color: var(--color-secondary);
-            margin: -0.2rem;
+            margin: 0 -0.2rem;
+            min-width: 100%;
+            max-height: 62px;
         }
     }
     @media only screen and (min-width: $--breakpoint-lg){
@@ -286,8 +328,8 @@ main{
     }
 }
 .btn{
-    justify-content: space-around;
     margin: 2.5rem auto;
+    position: relative;
     &:not(:last-child)::before{
         content: "";
         position: absolute;

@@ -65,9 +65,6 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -112,7 +109,7 @@ img {
   width: 100%;
 }
 
-a {
+a:not(.content-container-a) {
   font-family: var(--font-family-h);
   text-transform: uppercase;
   text-decoration: none;
@@ -127,7 +124,7 @@ a {
   position: relative;
 }
 
-a:not(.branding-link, .social-icon)::after {
+a:not(.branding-link, .social-icon, .content-container-a)::after {
   content: "";
   display: block;
   position: absolute;
@@ -393,40 +390,73 @@ main {
   margin-left: auto;
 }
 
-.inner-page .btn {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+.inner-page .buttons-container .btn {
+  display: inline-block;
 }
 
-.inner-page .btn:first-child {
+.inner-page .buttons-container .btn a {
+  margin: 0 2rem;
+}
+
+.inner-page .buttons-container .btn:first-child a {
   margin-left: 0;
 }
 
 .main-page .card {
   text-align: center;
   margin-bottom: 2rem;
-  background-color: #d66f56;
+  -ms-flex-preferred-size: 48%;
+      flex-basis: 48%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
 }
 
 @media only screen and (min-width: 992px) {
   .main-page .card {
-    margin: 0 0.8rem;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
   }
 }
 
-.main-page .card .copy {
-  padding: 7rem 4rem 0;
+.main-page .card .content-container-a {
   color: var(--color-secondary);
+  text-decoration: none;
+  overflow: hidden;
 }
 
-.main-page .card .copy .title {
+.main-page .card .content-container-a .pop-out {
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  right: 1.5rem;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height .3s ease-in;
+  transition: height .3s ease-in;
+}
+
+.main-page .card .content-container-a .pop-out p {
+  padding: 18px 12px;
+  font-size: 1.2rem;
+}
+
+.main-page .card .content-container-a .copy {
+  padding: 7rem 4rem 0;
+  min-width: 100%;
+}
+
+.main-page .card .content-container-a .copy .title {
   margin: 0 0 3rem;
+  -webkit-transition: margin .2s ease-in-out;
+  transition: margin .2s ease-in-out;
   font-weight: 700;
   text-transform: initial;
 }
 
-.main-page .card .copy .title::after {
+.main-page .card .content-container-a .copy .title::after {
   content: "";
   height: 0.2rem;
   width: 17%;
@@ -435,17 +465,40 @@ main {
   margin: 3rem auto;
 }
 
-.main-page .card .copy p {
+.main-page .card .content-container-a .copy p {
   margin: 3rem auto 6rem;
 }
 
-.main-page .card img {
-  width: 75%;
+.main-page .card .content-container-a img {
+  max-width: 70%;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+  margin: 0 auto;
+  -webkit-transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+  transition: -webkit-transform .2s ease-in-out;
 }
 
-.main-page .card .buttons {
+.main-page .card .content-container-a:hover .pop-out, .main-page .card .content-container-a:focus .pop-out {
+  height: 5.4rem;
+}
+
+.main-page .card .content-container-a:hover .title, .main-page .card .content-container-a:focus .title {
+  margin: -0.5rem 0 3.5rem;
+}
+
+.main-page .card .content-container-a:hover img, .main-page .card .content-container-a:focus img {
+  -webkit-transform: scaleX(1.02);
+  transform: scale(1.02);
+}
+
+.main-page .card .buttons-container {
   background-color: var(--color-secondary);
-  margin: -0.2rem;
+  margin: 0 -0.2rem;
+  min-width: 100%;
+  max-height: 62px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -455,9 +508,8 @@ main {
 }
 
 .btn {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
   margin: 2.5rem auto;
+  position: relative;
 }
 
 .btn:not(:last-child)::before {
