@@ -486,6 +486,9 @@ main {
       -ms-grid-row-align: end;
       align-self: end;
   margin: 0 auto;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 70%;
+          flex: 0 0 70%;
   -webkit-transition: -webkit-transform .2s ease-in-out;
   transition: transform .2s ease-in-out;
   transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
