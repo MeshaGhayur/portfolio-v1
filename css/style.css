@@ -525,6 +525,14 @@ main {
   max-height: 62px;
 }
 
+.main-page .card.black-text .copy {
+  color: var(--color-primary);
+}
+
+.main-page .card.black-text .copy .title::after {
+  background-color: var(--color-primary);
+}
+
 @media only screen and (min-width: 992px) {
   .main-page {
     margin: 0 -0.8rem;

@@ -340,6 +340,10 @@ main{
             min-width: 100%;
             max-height: 62px;
         }
+        &.black-text .copy{
+            color: var(--color-primary);
+            .title::after{background-color: var(--color-primary);}
+        }
     }
     @media only screen and (min-width: $--breakpoint-lg){
         margin: 0 -0.8rem;
